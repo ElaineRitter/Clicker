@@ -322,35 +322,14 @@ public class GUI {
 				nameCol = connect.getBoth(argum2);
 				
 				
-				 finalids.clear(); 
+				finalids.clear(); 
 				 
-				 finalids = src.getQuestionIDs(); 
+				finalids = src.getQuestionIDs(); 
 			
-				
-				
-				/*
-				for (String name: nameCol.keySet()){
-
-					String key =name.toString();
-					String value = nameCol.get(name).toString(); 
-					//table.getModel().setValueAt(key, count, 0);
-					//table.getModel().setValueAt(value, count, 1);
-					dtm.addRow(new Object[] { key, value, " ", " ", " " });
-					count++; 
-				} 
-				*/
-				
-				ArrayList<String> name = new ArrayList<String>();
-				ArrayList<String> dura = new ArrayList<String>();
-				ArrayList<String> perc = new ArrayList<String>();
-				 
-				for (String id : finalids) {
-					name.add(src.getQName(id));
-					dura.add(src.getQDuration(id));
-					perc.add(src.getQPercentCorrect(id));
-					
+				for (String id : finalids) {	
 					dtm.addRow(new Object[] {src.getQName(id), src.getQDuration(id), src.getQPercentCorrect(id), " ", " " });
 				}
+				src.close();
 			}
 		};
 		

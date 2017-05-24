@@ -53,14 +53,23 @@ public class SearchResults {
 		return questionIDs;
 	}
 	
+	public void close() {
+        if (con != null) {
+            try {
+                con.close();
+            }
+            catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+	
 	private void getqIDs(String query){ 	
 		try{ 	
 			rs = st.executeQuery(query);
-			System.out.println("hey1");
 			while(rs.next()){ 
 				String qIDs = rs.getString("id");
 				questionIDs.add(qIDs);
-				System.out.println(qIDs);
 			}
 		}
 		catch(Exception ex){ 
@@ -239,7 +248,6 @@ public class SearchResults {
 				") AS correct\n" +
 				"ON total.question_id = correct.question_id)  AS sub\n";
 		String result = singleResultHelper(query);
-		System.out.println(query);
 		// format example: 76.6667 TODO
 		return result.substring(0,5);
 	}
