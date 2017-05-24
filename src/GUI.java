@@ -340,27 +340,20 @@ public class GUI {
 				} 
 				*/
 				
-				
-				for(int i = 0; i<finalids.size(); i++){
-					ArrayList<String> name = src.getQNum(finalids.get(i));
-					ArrayList<String> dura = src.getQDuration(finalids.get(i));
-					ArrayList<String> perc = src.getQPercentCorrect(finalids.get(i)); 
-					
-					
-					dtm.addRow(new Object[] {name.get(i), dura.get(i), perc.get(i), " ", " " });		
-					
-				}
-				
-						
+				ArrayList<String> name = new ArrayList<String>();
+				ArrayList<String> dura = new ArrayList<String>();
+				ArrayList<String> perc = new ArrayList<String>();
 				 
-				
+				for (String id : finalids) {
+					name.add(src.getQName(id));
+					dura.add(src.getQDuration(id));
+					perc.add(src.getQPercentCorrect(id));
+					
+					dtm.addRow(new Object[] {src.getQName(id), src.getQDuration(id), src.getQPercentCorrect(id), " ", " " });
+				}
 			}
 		};
-
-
 		
-
-
 
 
 		ActionListener update = new ActionListener() {
